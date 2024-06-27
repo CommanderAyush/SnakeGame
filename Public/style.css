@@ -1,0 +1,93 @@
+body {
+    background-image: url('Background.jpg');
+}
+
+.main{
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.board{
+    display: grid;
+    grid-template-columns: repeat(20,30px);
+    grid-template-rows: repeat(20,30px);
+    border: 1px solid rgb(124, 220, 124);
+    border-radius: 10px;
+}
+.MainScore{
+    font-size: 30px;
+    color:white;
+    width: 100%;
+    text-align: center;
+    margin: 10px;
+}
+.Cell
+{
+    height: 30px;
+    width: 30px;
+    border: 1px solid rgb(124, 220, 124);
+    background-color: #c1ff72;
+}
+.diff{
+    background-color: #b6f367
+}   
+.Head{
+  background-image: url('Head.png');
+  background-size: 25px;
+   background-repeat: no-repeat;
+   background-position: 50% 50%;
+}
+.Snake
+{
+   background-image: url('Head.png');
+   background-size: 25px;
+   background-repeat: no-repeat;
+   background-position: 50% 50%;
+}
+.Food{
+    background-image: url('Food.png');
+    background-position: 50% 50%;
+    background-size: 35px;
+}
+
+
+.gameOver{
+   
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.Window{
+    background-color: whitesmoke;
+    height: 200px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    border-radius: 10px;
+}
+.Score
+{
+    margin-top: 10px;
+    font-size: 40px;
+    color: black;
+    text-align: center;
+   
+}
+.PlayAgain
+{   
+    
+    color: white;
+    align-self: last baseline;
+    justify-self: center;
+}   
+button{
+    border-radius: 10px;
+    background-color: pink;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
