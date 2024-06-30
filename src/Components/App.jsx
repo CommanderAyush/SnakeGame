@@ -1,6 +1,6 @@
 import React from "react";
 import OverScreen from './OverScreen';
-var initialDirection="Left";
+var initialDirection="Right";
 var direction=initialDirection;
 
 function App(){
@@ -15,6 +15,7 @@ function App(){
     var [Snake,SetSnake]=React.useState(initialSnake);
     var [Food,SetFood]=React.useState(initialFood);
     var [highScore,setHighScore]=React.useState(0);
+    var [speed,Setspeed]=React.useState(130);
     function create()
     {
         
@@ -105,16 +106,29 @@ function App(){
 
         if(Food.x===newSnake[0].x && Food.y===newSnake[0].y){
             setScore(Score+1);
+            if(Score%8==0)
+            {
+                Setspeed(speed-5);
+            }
             ateFood=true;
             FoodGenerator();
         }
-
-        if(bit|| newSnake[0].x<0 || newSnake[0].x>=gridSize || newSnake[0].y<0 || newSnake[0].y>=gridSize){
+        if(bit){
             Setgame(true);
             return;
         }
-       
-
+        else if(newSnake[0].x<0 ){
+            newSnake[0].x=gridSize-1;
+        }
+        else if(newSnake[0].x>=gridSize){
+            newSnake[0].x=0;
+        }
+        else if(newSnake[0].y<0){
+            newSnake[0].y=gridSize-1;
+        }
+        else if(newSnake[0].y>=gridSize){
+            newSnake[0].y=0;
+        }
         if(!ateFood){
             newSnake.pop();
         }
@@ -150,7 +164,7 @@ function App(){
         console.log(direction);
     }
     React.useEffect(()=>{
-        let interval=setInterval(Path,100);
+        let interval=setInterval(Path,speed);
         return ()=>{
             clearInterval(interval,Path);
         }
