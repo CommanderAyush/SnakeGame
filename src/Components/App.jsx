@@ -3,10 +3,12 @@ import OverScreen from './OverScreen';
 var initialDirection="Right";
 var direction=initialDirection;
 
+var audio = new Audio('Song.mp3');
+var eat=new Audio('Eat.wav');
 function App(){
     var initialSnake=[{x:5,y:5},{x:4,y:5},{x:3,y:5}];
     var initialFood={x:8,y:8};
-    
+    audio.play();
     var CellArray=[];
     
     var gridSize=20;
@@ -17,8 +19,7 @@ function App(){
     var [highScore,setHighScore]=React.useState(0);
     var [speed,Setspeed]=React.useState(130);
     function create()
-    {
-        
+    {   
         var count=0;
         var ind=0;
         for(var i=0;i<gridSize;i++)
@@ -76,6 +77,7 @@ function App(){
            setHighScore(Score);
         }
         setScore(0);
+        Setspeed(130);
         Setgame(false);
     }
     function Path()
@@ -105,6 +107,7 @@ function App(){
         }
 
         if(Food.x===newSnake[0].x && Food.y===newSnake[0].y){
+            eat.play();
             setScore(Score+1);
             if(Score%8==0)
             {
